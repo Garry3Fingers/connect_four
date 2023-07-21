@@ -17,7 +17,6 @@ class GameBoard
   end
 
   def apply_change(token, column, row = 5)
-    # column -= 1
     if board[row][column - 1] != "\u2609"
       apply_change(token, column, row - 1)
     else
