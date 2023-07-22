@@ -26,6 +26,7 @@ class GameBoard
 
   def display_board
     puts ''
+    puts '1 2 3 4 5 6 7'
 
     board.each do |arr|
       arr.each { |item| print "#{item} " }
