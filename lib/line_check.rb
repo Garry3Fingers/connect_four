@@ -11,7 +11,9 @@ class LineCheck
   end
 
   def check(token)
-    vertical_check(token) || horizontal_check(token)
+    return true if vertical_check(token) || horizontal_check(token)
+
+    false
   end
 
   private
@@ -22,7 +24,7 @@ class LineCheck
     rows_with_token.each do |_row, arr|
       next if arr.empty?
 
-      return true if arr.each_cons(2).all? { |x, y| y == x + 1 }
+      return true if arr.each_cons(2).all? { |x, y| y == x + 1 } && arr.size == 4
     end
 
     false
