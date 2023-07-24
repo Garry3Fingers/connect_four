@@ -8,7 +8,7 @@ describe LineCheck do
       @token = 'V'
     end
 
-    context 'when it has a vertical line of four identical tokens' do
+    context 'when there is a vertical line of four identical tokens on the board' do
       board = [
         ["\u2609", "\u2609", 'V', "\u2609", "\u2609", "\u2609", "\u2609"],
         ["\u2609", "\u2609", 'V', "\u2609", "\u2609", "\u2609", "\u2609"],
@@ -20,7 +20,24 @@ describe LineCheck do
 
       subject(:line_check) { described_class.new(board) }
 
-      it 'return true' do
+      it 'returns true' do
+        expect(line_check.check(@token)).to eq(true)
+      end
+    end
+
+    context 'when there is a horizontal line of four identical tokens on the board' do
+      board = [
+        ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
+        ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
+        ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
+        ["\u2609", 'V', 'V', 'V', 'V', "\u2609", "\u2609"],
+        ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
+        ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"]
+      ]
+
+      subject(:line_check) { described_class.new(board) }
+
+      it 'returns true' do
         expect(line_check.check(@token)).to eq(true)
       end
     end
