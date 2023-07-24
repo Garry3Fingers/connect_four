@@ -11,21 +11,34 @@ class LineCheck
   end
 
   def check(token)
-    vertical_check(token)
+    vertical_check(token) || horizontal_check(token)
   end
 
   private
 
+  def horizontal_check(token)
+    rows_with_token = find_each_index(token)
+
+    rows_with_token.each do |_row, arr|
+      next if arr.empty?
+
+      return true if arr.each_cons(2).all? { |x, y| y == x + 1 }
+    end
+
+    false
+  end
+
   def vertical_check(token)
-    rows_woth_columns = find_each_index(token)
-    rows_woth_columns.each do |row, column|
+    rows_with_columns = find_each_index(token)
+
+    rows_with_columns.each do |row, column|
       next if column.empty?
 
       column.each do |element|
         i = row
         count = 0
         while i <= 5 && count < 4
-          break unless rows_woth_columns[i].include?(element)
+          break unless rows_with_columns[i].include?(element)
 
           count += 1
           i += 1
