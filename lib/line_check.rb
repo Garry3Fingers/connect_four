@@ -11,12 +11,57 @@ class LineCheck
   end
 
   def check(token)
-    return true if vertical_check(token) || horizontal_check(token)
+    return true if vertical_check(token) || horizontal_check(token) || diagonal_check(token)
 
     false
   end
 
   private
+
+  def diagonal_left(token, row, element)
+    i = row
+    j = element
+    count = 0
+    while i <= 5 && count < 4
+      break unless game_board[i][j] == token
+
+      i += 1
+      j -= 1
+      count += 1
+    end
+
+    count
+  end
+
+  def diagonal_right(token, row, element)
+    i = row
+    j = element
+    count = 0
+    while i <= 5 && count < 4
+      break unless game_board[i][j] == token
+
+      i += 1
+      j += 1
+      count += 1
+    end
+
+    count
+  end
+
+  def diagonal_check(token)
+    diagonals = find_each_index(token)
+
+    diagonals.each do |row, column|
+      next if column.empty?
+
+      column.each do |element|
+        return true if diagonal_left(token, row, element) == 4
+        return true if diagonal_right(token, row, element) == 4
+      end
+    end
+
+    false
+  end
 
   def horizontal_check(token)
     rows_with_token = find_each_index(token)
