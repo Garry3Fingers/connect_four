@@ -15,4 +15,19 @@ describe GameBoard do
       end
     end
   end
+
+  describe '#available_space?' do
+    context 'when there is availbale space' do
+      it 'returns true' do
+        expect(game_board.available_space?).to eq(true)
+      end
+    end
+
+    context 'when there is no availbale space' do
+      it "doesn't return true" do
+        allow(game_board).to receive(:available_space?).and_return(false)
+        expect(game_board.available_space?).not_to eq(true)
+      end
+    end
+  end
 end
