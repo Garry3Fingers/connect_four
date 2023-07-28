@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This class implements the playing field for the game.
-# It has public interfaces #apply_change and #display_board
+# It has public interfaces #apply_change, #available_space and #display_board
 class GameBoard
   attr_accessor :board
 
@@ -34,5 +34,9 @@ class GameBoard
     end
 
     puts ''
+  end
+
+  def available_space?
+    board.any? { |arr| arr.any? { |item| item == "\u2609" } }
   end
 end
