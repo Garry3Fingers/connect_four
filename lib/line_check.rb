@@ -67,12 +67,25 @@ class LineCheck
     rows_with_token = find_each_index(token)
 
     rows_with_token.each do |_row, arr|
-      next if arr.empty?
+      next unless arr.size == 4
 
-      return true if arr.each_cons(2).all? { |x, y| y == x + 1 } && arr.size == 4
+      return true if arr.each_cons(2).all? { |x, y| y == x + 1 }
     end
 
     false
+  end
+
+  def column_check(element, rows, row)
+    i = row
+    count = 0
+    while i <= 5 && count < 4
+      break unless rows[i].include?(element)
+
+      count += 1
+      i += 1
+    end
+
+    count
   end
 
   def vertical_check(token)
@@ -82,15 +95,7 @@ class LineCheck
       next if column.empty?
 
       column.each do |element|
-        i = row
-        count = 0
-        while i <= 5 && count < 4
-          break unless rows_with_columns[i].include?(element)
-
-          count += 1
-          i += 1
-        end
-
+        count = column_check(element, rows_with_columns, row)
         return true if count == 4
       end
     end
