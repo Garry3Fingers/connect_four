@@ -25,12 +25,13 @@ class Game
   private
 
   def start_message
-    <<-MESSAGE
-     Connect Four is a two-player connection rack game,
-     in which the players take turns dropping tokens into a six-row,
-     seven-column vertically suspended grid.
-     The objective of the game is to be the first to form a horizontal,
-     vertical, or diagonal line of four of one's own tokens.
+    puts ''
+    puts <<~MESSAGE
+      Connect Four is a two-player connection rack game,
+      in which the players take turns dropping tokens into a six-row,
+      seven-column vertically suspended grid.
+      The objective of the game is to be the first to form a horizontal,
+      vertical, or diagonal line of four of one's own tokens.
     MESSAGE
   end
 
