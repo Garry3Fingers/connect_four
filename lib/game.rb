@@ -34,8 +34,12 @@ class Game
     MESSAGE
   end
 
-  def first_player_move
+  def display_board
     game_board.display_board
+  end
+
+  def first_player_move
+    display_board
     token = first_player.token
     input = first_player.input
     game_board.apply_change(token, input)
@@ -43,11 +47,12 @@ class Game
   end
 
   def first_player_won
+    display_board
     puts "#{first_player.name} won the game!"
   end
 
   def second_player_move
-    game_board.display_board
+    display_board
     token = second_player.token
     input = second_player.input
     game_board.apply_change(token, input)
@@ -55,6 +60,7 @@ class Game
   end
 
   def second_player_won
+    display_board
     puts "#{second_player.name} won the game!"
   end
 
