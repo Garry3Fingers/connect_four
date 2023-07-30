@@ -7,17 +7,17 @@ class GameBoard
 
   def initialize
     @board = [
-      ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
-      ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
-      ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
-      ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
-      ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"],
-      ["\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609", "\u2609"]
+      ["\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8"],
+      ["\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8"],
+      ["\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8"],
+      ["\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8"],
+      ["\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8"],
+      ["\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8", "\u26C8"]
     ]
   end
 
   def apply_change(token, column, row = 5)
-    if board[row][column - 1] != "\u2609"
+    if board[row][column - 1] != "\u26C8"
       apply_change(token, column, row - 1)
     else
       board[row][column - 1] = token
@@ -26,8 +26,6 @@ class GameBoard
 
   def display_board
     puts ''
-    puts '1 2 3 4 5 6 7'
-
     board.each do |arr|
       arr.each { |item| print "#{item} " }
       puts ''
@@ -37,6 +35,6 @@ class GameBoard
   end
 
   def available_space?
-    board.any? { |arr| arr.any? { |item| item == "\u2609" } }
+    board.any? { |arr| arr.any? { |item| item == "\u26C8" } }
   end
 end
