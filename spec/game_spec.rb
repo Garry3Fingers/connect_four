@@ -14,6 +14,7 @@ describe Game do
 
   before do
     allow(game).to receive(:puts)
+    allow(game).to receive(:verify_input).and_return(false)
     allow(game_board).to receive(:display_board)
     allow(first_player).to receive(:input)
     allow(second_player).to receive(:input)
