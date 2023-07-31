@@ -37,4 +37,4 @@ module StartGame
   end
 end
 
-StartGame.start_game
+# StartGame.start_game
